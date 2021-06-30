@@ -1,0 +1,48 @@
+header > div {
+    display: flex;
+    background: linear-gradient(to bottom right, #E68A09, #8F5BFE);
+}
+
+h1 {
+    font-family: "finger paint", "Arial", "sans-serif";
+    font-size: 4em;
+    margin: auto;
+}
+
+.fa-shopping-cart {
+    font-size: 2em;
+    padding: 1em;
+}
+
+main {
+    width: auto;
+    margin: 2em 20em;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+img {
+    width: 350px;
+    padding: 7px 5px 5px;
+}
+
+.produce {
+    margin: 2em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid black 1px;
+}
+
+.detail {
+    font-size: 1.2em;
+    font-family: "Arial", "sans-serif";
+}
+
+.detail > p {
+    padding: 7px;
+}
