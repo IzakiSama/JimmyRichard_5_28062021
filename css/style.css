@@ -3,10 +3,14 @@ header > div {
     background: linear-gradient(to bottom right, #E68A09, #8F5BFE);
 }
 
-h1 {
+.accueil {
     font-family: "finger paint", "Arial", "sans-serif";
-    font-size: 4em;
-    margin: auto;
+    margin: auto!important;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4em!important;
 }
 
 .fa-shopping-cart {
@@ -20,9 +24,15 @@ main {
 }
 
 a {
-    color: black;
-    text-decoration: none;
+    color: black!important;
+    text-decoration: none!important;
     display: block;
+}
+
+.more {
+    width: 100px;
+    margin: 2em 0;
+    text-decoration: underline;
 }
 
 img {
@@ -30,12 +40,11 @@ img {
     padding: 7px 5px 5px;
 }
 
-.produce {
-    margin: 2em 0;
+#products {
     display: flex;
-    justify-content: center;
     align-items: center;
     border: solid black 1px;
+    flex-direction: column;
 }
 
 .detail {
