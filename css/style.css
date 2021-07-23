@@ -18,7 +18,7 @@ h1 {
     padding: 1em;
 }
 
-main {
+#mainProduct {
     width: auto;
     margin: 2em 20em;
 }
@@ -40,7 +40,7 @@ img {
     padding: 7px 5px 5px;
 }
 
-#products {
+#products, #product {
     display: flex;
     align-items: center;
     border: solid black 1px;
@@ -54,4 +54,8 @@ img {
 
 .detail > p {
     padding: 7px;
+}
+
+.img {
+    width: 170px!important;
 }

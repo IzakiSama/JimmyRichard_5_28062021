@@ -8,7 +8,7 @@ fetch("http://localhost:3000/api/teddies")
   })
   .then(function(teddies) {
     // console.log(teddies);
-    createTeddies(teddies)
+    createTeddies(teddies);
   })
   .catch(function(err) {
     // Une erreur est survenue
@@ -40,22 +40,7 @@ function createTeddy(teddy) {
 
   const linkDetail = document.createElement('a');
   linkDetail.href = "produit.html?id=" + teddy._id;
-  linkDetail.textContent = "+ de détail";
+  linkDetail.textContent = "+ de détails";
   divProducts.appendChild(linkDetail);
 };
 
-
-
-
-
-
-// var section = document.querySelector('section');
-
-// var paragraphe = document.createElement('p');
-// paragraphe.textContent = 'We hope you enjoyed the ride.';
-// section.appendChild(paragraphe);
-
-// var text = document.createTextNode(' — the premier source for web development knowledge.');
-
-// var linkPara = document.querySelector('p');
-// linkPara.appendChild(text);
