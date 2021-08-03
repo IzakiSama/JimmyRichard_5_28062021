@@ -25,22 +25,27 @@ function createTeddies (teddies) {
 function createTeddy(teddy) {
   const divProducts = document.getElementById('products');
   
+  const divElement = document.createElement('div');
+  divElement.classList = "divElement";
+  divProducts.appendChild(divElement);
+
   const imgTeddy = document.createElement('img');
   imgTeddy.src = teddy.imageUrl;
   imgTeddy.alt = teddy.name;
-  divProducts.appendChild(imgTeddy);
+  divElement.appendChild(imgTeddy);
 
   const paraName = document.createElement('p');
   paraName.textContent = teddy.name;
-  divProducts.appendChild(paraName);
+  divElement.appendChild(paraName);
 
   const paraPrice = document.createElement('p');
   paraPrice.textContent = teddy.price;
-  divProducts.appendChild(paraPrice);
+  divElement.appendChild(paraPrice);
 
   const linkDetail = document.createElement('a');
+  linkDetail.classList = "btnDetail"
   linkDetail.href = "produit.html?id=" + teddy._id;
   linkDetail.textContent = "+ de détails";
-  divProducts.appendChild(linkDetail);
+  divElement.appendChild(linkDetail);
 };
 
