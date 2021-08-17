@@ -4,12 +4,12 @@ let arrCartItems = [];
 
 // on récupère l'objet stocké dans le localstorage
 function getFromCart() {
-// on vérifie qu'il existe
+// on vérifie que ça fonctionne
   if (window.localStorage) {
     const cartItems = JSON.parse(localStorage.getItem('cart'));
     return cartItems;
   } else {
-    alert('CPT');
+    alert('Version navigateur obsolète');
   }
 };
 

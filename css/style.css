@@ -102,7 +102,7 @@ input:invalid {
     box-shadow: 0 0 5px 1px red;
   }
 
-#cancelBtn {
+#cancelCartBtn {
     margin-bottom: 1em;
 }
 
@@ -126,4 +126,10 @@ div.col {
 
 img.img {
     border-radius: 1em 0 0 1em;
+}
+
+#validateForm {
+    width: 19em;
+    margin: auto;
+    text-align: center;
 }

@@ -1,25 +1,29 @@
 
 // On appelle l'API avec fetch
-fetch("http://localhost:3000/api/teddies")
-  .then(function(res) {
-    if (res.ok) {
-      return res.json();
+if (window.fetch) {
+  fetch("http://localhost:3000/api/teddies")
+    .then(function(res) {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then(function(teddies) {
+      // console.log(teddies);
+      createTeddies(teddies);
+    })
+    .catch(function(err) {
+      // Une erreur est survenue
+    });
+  
+  // On crée une fonction qui parcourt les valeurs de l'API
+  function createTeddies (teddies) {
+    for (const teddy of teddies) {
+      createTeddy(teddy);
     }
-  })
-  .then(function(teddies) {
-    // console.log(teddies);
-    createTeddies(teddies);
-  })
-  .catch(function(err) {
-    // Une erreur est survenue
-  });
-
-// On crée une fonction qui parcourt les valeurs de l'API
-function createTeddies (teddies) {
-  for (const teddy of teddies) {
-    createTeddy(teddy);
-  }
-};
+  };
+} else {
+  alert('Version navigateur obsolète');
+}
 
 // On crée une fonction qui crée des éléments dans le DOM
 function createTeddy(teddy) {
@@ -44,7 +48,7 @@ function createTeddy(teddy) {
 
   const linkDetail = document.createElement('a');
   linkDetail.classList = "btnDetail"
-  linkDetail.href = "produit.html?id=" + teddy._id;
+  linkDetail.href = "product.html?id=" + teddy._id;
   linkDetail.textContent = "+ de détails";
   divElement.appendChild(linkDetail);
 };

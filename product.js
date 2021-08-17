@@ -5,22 +5,26 @@ const id = params.get("id");
 // console.log(id);
 
 // On appelle l'API avec fetch et on ajoute l'id 
-fetch("http://localhost:3000/api/teddies/" + id)
-.then(function(res) {
-  if (res.ok) {
-    return res.json();
-  }
-})
-.then(function(teddy) {
-  // console.log(teddies);
-  createTeddy(teddy);
-  if ( getFromCart() != null ) {
-      arrCartItems = getFromCart()
-  }
-})
-.catch(function(_err) {
-  // Une erreur est survenue
-});
+if (window.fetch) {
+  fetch("http://localhost:3000/api/teddies/" + id)
+  .then(function(res) {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+  .then(function(teddy) {
+    createTeddy(teddy);
+    if ( getFromCart() != null ) {
+        arrCartItems = getFromCart()
+    }
+  })
+  .catch(function(error) {
+    alert("Une erreur est survenue" + error)
+  });
+} else {
+  alert('Version navigateur obsolète');
+}
+
 
 // On crée une fonction qui crée des éléments dans le DOM
 function createTeddy(teddy) {
@@ -101,4 +105,3 @@ function addToCart() {
   
   alert(name + " " + color + " a été ajouté au panier !");
 };
-  
