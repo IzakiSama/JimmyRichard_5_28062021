@@ -4,7 +4,7 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 // console.log(id);
 
-// On appelle l'API avec fetch et on ajoute l'id 
+// On appelle l'API avec fetch et on ajoute l'id à l'URL
 if (window.fetch) {
   fetch("http://localhost:3000/api/teddies/" + id)
   .then(function(res) {
@@ -104,4 +104,6 @@ function addToCart() {
   localStorage.setItem("cart", JSON.stringify(arrCartItems));
   
   alert(name + " " + color + " a été ajouté au panier !");
+  console.log(arrCartItems)
 };
+

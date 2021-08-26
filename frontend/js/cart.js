@@ -16,7 +16,9 @@ function createDivSum(totalSum) {
   divSum.id = "sum";
   divSum.textContent = "Sous-total " + totalSum + " gils";
   sumContainer.appendChild(divSum);
+
 };
+// console.log(createDivSum())
 
 // fonction qui calcule la somme totale des produits
 function totalSumOfCart(arrCartItems) {
@@ -29,13 +31,15 @@ function totalSumOfCart(arrCartItems) {
 
 // supprime objet du localStorage
 const deleteCart = document.getElementById('cancelCartBtn');
+deleteCart.href = "index.html";
 deleteCart.addEventListener('click', deleteItemInCart);
 function deleteItemInCart() {
   localStorage.removeItem('cart');
+  localStorage.removeItem('order');
   alert("Commande supprimée !");
 };
 
-function getOrderInfos() {
+function getOrderInfos(event) {
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
   const address = document.getElementById('address').value;
@@ -54,16 +58,20 @@ function getOrderInfos() {
   const products = [];
   for (const cartItem of arrCartItems) {
     products.push(cartItem.id)
+  } if (arrCartItems == 0) {
+    alert('Votre panier est vide')
+  } else {
+    // console.log(products)
+    const orderInfos = {
+      contact,
+      products
+    }
+    sendOrderInfos(orderInfos)
+    // console.log(orderInfos)
   }
-  // console.log(products)
-
-  const orderInfos = {
-    contact,
-    products
-  }
-  sendOrderInfos(orderInfos)
-  // console.log(orderInfos)
+  event.preventDefault();
 };
+// console.log(getOrderInfos())
 
 function sendOrderInfos(orderInfos) {
   if (window.fetch) {
@@ -83,6 +91,7 @@ function sendOrderInfos(orderInfos) {
           id : data.orderId
         }
       saveOrderInfos(order)
+      redirectToValidation()
     })
     .catch(function(error) {
       alert("Une erreur est survenue " + error)
@@ -92,11 +101,19 @@ function sendOrderInfos(orderInfos) {
   };
 }
 
-const validateBtn = document.getElementById('validateCartBtn');
-validateBtn.href = "validation.html"
-validateBtn.addEventListener('click', getOrderInfos);
+function redirectToValidation() {
+  window.location.replace("validation.html");
+}
 
+const validateBtn = document.getElementById('form');
+validateBtn.addEventListener('submit', getOrderInfos);
+  
 function saveOrderInfos(order) {
   localStorage.setItem("order", JSON.stringify(order));
   // console.log(order)
-}
+};
+
+  // validateBtn.href = "validation.html";
+  // window.location.replace("validation.html");
+  // window.location.assign("validation.html");
+  // window.location.href = "validation.html";
