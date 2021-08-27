@@ -12,7 +12,7 @@ if (window.fetch) {
       createTeddies(teddies);
     })
     .catch(function(err) {
-      // Une erreur est survenue
+      console.log("Une erreur est survenue" + err )
     });
   
   // On crée une fonction qui parcourt les valeurs de l'API
@@ -43,7 +43,7 @@ function createTeddy(teddy) {
   divElement.appendChild(paraName);
 
   const paraPrice = document.createElement('p');
-  paraPrice.textContent = teddy.price;
+  paraPrice.textContent = teddy.price + " gils";
   divElement.appendChild(paraPrice);
 
   const linkDetail = document.createElement('a');

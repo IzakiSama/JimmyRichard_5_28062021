@@ -104,6 +104,6 @@ function addToCart() {
   localStorage.setItem("cart", JSON.stringify(arrCartItems));
   
   alert(name + " " + color + " a été ajouté au panier !");
-  console.log(arrCartItems)
+  // console.log(arrCartItems)
 };
 

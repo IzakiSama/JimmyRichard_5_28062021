@@ -13,21 +13,21 @@ function getOrder() {
   }
 };
 
-function showValidation() {
+function showValidation(order) {
   const validateForm = document.getElementById('validateForm');
 
   const divRow = document.createElement('div');
   validateForm.appendChild(divRow);
+  
+  const id = document.createElement('p');
+  id.textContent = "Merci pour votre commande n° : "
+  id.textContent += order.id;
+  divRow.appendChild(id);
 
   const price = document.createElement('p');
   price.textContent = 
-    "Merci pour votre commande d'un total de " + order.totalPrice + " gils";
+    "D'un montant de " + order.totalPrice + " gils";
   divRow.appendChild(price);
-
-  const id = document.createElement('p');
-  id.textContent = "Avec l'identifiant : "
-  id.textContent += order.id;
-  divRow.appendChild(id);
 
   const linkAccueil = document.createElement('a')
   linkAccueil.href = "index.html"

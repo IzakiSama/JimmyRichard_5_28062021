@@ -33,45 +33,49 @@ function totalSumOfCart(arrCartItems) {
 const deleteCart = document.getElementById('cancelCartBtn');
 deleteCart.href = "index.html";
 deleteCart.addEventListener('click', deleteItemInCart);
+
 function deleteItemInCart() {
   localStorage.removeItem('cart');
   localStorage.removeItem('order');
-  alert("Commande supprimée !");
+  alert("Panier supprimé !");
 };
 
-function getOrderInfos(event) {
-  const firstName = document.getElementById('firstName').value;
-  const lastName = document.getElementById('lastName').value;
-  const address = document.getElementById('address').value;
-  const city = document.getElementById('city').value;
-  const email = document.getElementById('emailAdress').value;
+if (arrCartItems.length <= 0) {
+  emptyCart()
+} else {
+  function getOrderInfos(event) {
+    event.preventDefault();
 
-  const contact = {
-    firstName : firstName,
-    lastName : lastName,
-    address : address,
-    city : city,
-    email : email
-  }
-  // console.log(contact)
-  
-  const products = [];
-  for (const cartItem of arrCartItems) {
-    products.push(cartItem.id)
-  } if (arrCartItems == 0) {
-    alert('Votre panier est vide')
-  } else {
-    // console.log(products)
-    const orderInfos = {
-      contact,
-      products
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const address = document.getElementById('address').value;
+    const city = document.getElementById('city').value;
+    const email = document.getElementById('emailAdress').value;
+
+    const contact = {
+      firstName : firstName,
+      lastName : lastName,
+      address : address,
+      city : city,
+      email : email
     }
-    sendOrderInfos(orderInfos)
-    // console.log(orderInfos)
-  }
-  event.preventDefault();
-};
-// console.log(getOrderInfos())
+    // console.log(contact)
+    
+    const products = [];
+    for (const cartItem of arrCartItems) {
+      products.push(cartItem.id)
+    }
+    
+      // console.log(products)
+      const orderInfos = {
+        contact,
+        products
+      }
+      sendOrderInfos(orderInfos)
+      // console.log(orderInfos)
+    }
+  };
+  // console.log(getOrderInfos())
 
 function sendOrderInfos(orderInfos) {
   if (window.fetch) {
@@ -111,6 +115,14 @@ validateBtn.addEventListener('submit', getOrderInfos);
 function saveOrderInfos(order) {
   localStorage.setItem("order", JSON.stringify(order));
   // console.log(order)
+};
+
+function emptyCart() {
+  const container = document.getElementById('container');
+
+  const textEmptyCart = document.createElement('p');
+  textEmptyCart.textContent = "Votre panier est vide !";
+  container.appendChild(textEmptyCart);
 };
 
   // validateBtn.href = "validation.html";
