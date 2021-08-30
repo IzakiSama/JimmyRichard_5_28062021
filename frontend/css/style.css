@@ -138,3 +138,14 @@ img.img {
     margin: auto;
     text-align: center;
 }
+
+#cancelCartBtn {
+    display: flex;
+    width: 11.5em;
+    margin: 0;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: .25em;
+    padding: .375em .75em;
+    color: #fff!important;
+}
