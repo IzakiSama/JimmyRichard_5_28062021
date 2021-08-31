@@ -6,7 +6,6 @@ if ( getFromCart() != null ) {
   const totalSum = totalSumOfCart(arrCartItems);
   createDivSum(totalSum);
 };
-
 // console.log(arrCartItems)
 
 function createDivSum(totalSum) {
@@ -16,7 +15,6 @@ function createDivSum(totalSum) {
   divSum.id = "sum";
   divSum.textContent = "Sous-total " + totalSum + " gils";
   sumContainer.appendChild(divSum);
-
 };
 // console.log(createDivSum())
 
@@ -41,7 +39,8 @@ function deleteItemInCart() {
 };
 
 if (arrCartItems.length <= 0) {
-  emptyCart()
+  showEmptyCart();
+  hideForm();
 } else {
   function getOrderInfos(event) {
     event.preventDefault();
@@ -66,16 +65,16 @@ if (arrCartItems.length <= 0) {
       products.push(cartItem.id)
     }
     
-      // console.log(products)
-      const orderInfos = {
-        contact,
-        products
-      }
-      sendOrderInfos(orderInfos)
-      // console.log(orderInfos)
+    // console.log(products)
+    const orderInfos = {
+      contact,
+      products
     }
-  };
-  // console.log(getOrderInfos())
+    sendOrderInfos(orderInfos)
+    // console.log(orderInfos)
+  }
+};
+// console.log(getOrderInfos())
 
 function sendOrderInfos(orderInfos) {
   if (window.fetch) {
@@ -117,12 +116,17 @@ function saveOrderInfos(order) {
   // console.log(order)
 };
 
-function emptyCart() {
+function showEmptyCart() {
   const container = document.getElementById('container');
 
   const textEmptyCart = document.createElement('p');
   textEmptyCart.textContent = "Votre panier est vide !";
   container.appendChild(textEmptyCart);
+};
+
+function hideForm() {
+  const form = document.getElementById('form');
+  form.style.display = "none";
 };
 
   // validateBtn.href = "validation.html";

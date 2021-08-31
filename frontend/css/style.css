@@ -149,3 +149,9 @@ img.img {
     padding: .375em .75em;
     color: #fff!important;
 }
+
+#container > p {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 2em;
+}

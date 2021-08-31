@@ -15,7 +15,7 @@ if (window.fetch) {
   .then(function(teddy) {
     createTeddy(teddy);
     if ( getFromCart() != null ) {
-        arrCartItems = getFromCart()
+      arrCartItems = getFromCart()
     }
   })
   .catch(function(error) {
@@ -56,7 +56,6 @@ function createTeddy(teddy) {
   spanPrice.textContent = teddy.price;
   divProduct.appendChild(paraPrice);
   paraPrice.appendChild(spanPrice);
-
   
   // ajoute une liste pour les couleurs du produit
   const labelColor = document.createElement('label');
